@@ -129,5 +129,4 @@ dmypy.json
 .pyre/
 
 # data dir
-data/
 embeddings/
