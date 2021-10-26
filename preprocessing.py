@@ -51,9 +51,15 @@ def _remove_stopwords(text, is_lower_case=False):
 def preprocesser_text(df, to_prepro='review'):
     df[to_prepro]=df[to_prepro].swifter.apply(_strip_html)
     df[to_prepro]=df[to_prepro].swifter.apply(_remove_between_square_brackets)
+    df[to_prepro]=df[to_prepro].swifter.apply(_remove_special_characters)
     df[to_prepro]=df[to_prepro].swifter.apply(_simple_stemmer)
     df[to_prepro]=df[to_prepro].swifter.apply(_remove_stopwords)
     return df
 
 def binarize_sentiment(series, dict_ = {'positive':1, 'negative':0}):
     return series.replace(to_replace=dict_)
+
+def train_test_split(df, train_n = 40000):
+    test=df.iloc[train_n:]
+    train=df.iloc[:train_n]
+    return train, test
