@@ -5,6 +5,8 @@ from bs4 import BeautifulSoup
 import re
 # https://online.stat.psu.edu/stat504/lesson/1/1.7
 import swifter
+from sklearn.metrics import classification_report, accuracy_score
+
 
 #Removing the html strips
 def _strip_html(text):
@@ -63,3 +65,7 @@ def train_test_split(df, train_n = 40000):
     test=df.iloc[train_n:]
     train=df.iloc[:train_n]
     return train, test
+
+def evaluate(y_true, y_pred, target_names=['Negative', 'Positive']): # Target names are probably right? Could be wrong though.
+    report = classification_report(y_true, y_pred, target_names=target_names)
+    return accuracy_score(y_true, y_pred), report
