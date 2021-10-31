@@ -69,3 +69,4 @@ def train_test_split(df, train_n = 40000):
 def evaluate(y_true, y_pred, target_names=['Negative', 'Positive']): # Target names are probably right? Could be wrong though.
     report = classification_report(y_true, y_pred, target_names=target_names)
     return accuracy_score(y_true, y_pred), report
+
