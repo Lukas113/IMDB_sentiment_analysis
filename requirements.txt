@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:92c4b635c89f89c89ddc1b71c35c1107e8faea4ea65f5419701669832d40b45e
-size 85
+numpy
+pandas
+seaborn
+matplotlib
+nltk
+scikit-learn
+nltk
+wordcloud
+bs4
+swifter
