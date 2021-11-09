@@ -20,7 +20,7 @@ def _remove_between_square_brackets(text):
 
 
 # Define function for removing special characters
-def _remove_special_characters(text, remove_digits=True):
+def _remove_special_characters(text):
     pattern = r'[^a-zA-z0-9\s]'
     text = re.sub(pattern, '', text)
     return text
