@@ -57,6 +57,15 @@ def _remove_stopwords(text, is_lower_case=False):
 
 
 def preprocesser_text(df, to_prepro='review'):
+    """
+    The following text-normalization are applied:
+
+    1.	removing the HTML tags. These are not relevant for understanding the input.
+    2.	removing brackets with text (it seems that the text in brackets was either always a hyperlink or quote or reference, which are not too useful for the sentiment analysis).
+    3.	removing special characters, e. g. ?,!,/
+    4.	removing stop words. Stop words are common or “filler” words, which contain little information. For example, connection words. They are removed.
+    5.	put words into the basic form with the Porter-Stemmer-Algorithm, which applies multiple, hardcoded rules to reduce the word-length. Some examples: `likes`, `liked`, `likely` and `liking` will all be reduced to `like`.
+    """
     df[to_prepro] = df[to_prepro].swifter.apply(_strip_html)
     df[to_prepro] = df[to_prepro].swifter.apply(_remove_between_square_brackets)
     df[to_prepro] = df[to_prepro].swifter.apply(_remove_special_characters)
@@ -66,6 +75,14 @@ def preprocesser_text(df, to_prepro='review'):
 
 
 def preprocesser_bert(df, to_prepro='review'):
+    """       
+     The following text-normalization are applied:
+
+    1.	removing the HTML tags. These are not relevant for understanding the input.
+    2.	removing brackets with text (it seems that the text in brackets was either always a hyperlink or quote or reference, which are not too useful for the sentiment analysis).
+    3.	removing special characters, e. g. ?,!,/
+    """
+
     df[to_prepro] = df[to_prepro].swifter.apply(_strip_html)
     df[to_prepro] = df[to_prepro].swifter.apply(_remove_between_square_brackets)
     df[to_prepro] = df[to_prepro].swifter.apply(_remove_special_characters)
